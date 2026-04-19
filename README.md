@@ -3,40 +3,49 @@ Este projeto usa visão computacional em tempo real para detectar e contar pesso
 O que este código faz
 O script em main.py:
 
-Carrega o modelo YOLOv8 nano (arquivo yolov8n.pt).
-Abre a webcam padrão do computador.
-Processa cada frame do vídeo.
-Detecta objetos no frame com YOLO.
-Filtra apenas a classe pessoa (ID 0 no COCO).
-Desenha caixas nas pessoas detectadas.
-Mostra na tela a quantidade de pessoas detectadas.
-Encerra ao pressionar a tecla q.
-Tecnologias usadas
-Python
-OpenCV
-Ultralytics YOLOv8
-Pré-requisitos
+1) Carrega o modelo YOLOv8 nano (arquivo yolov8n.pt).
+2) Abre a webcam padrão do computador.
+3) rocessa cada frame do vídeo.
+4) Detecta objetos no frame com YOLO.
+5) Filtra apenas a classe pessoa (ID 0 no COCO).
+6) Desenha caixas nas pessoas detectadas.
+7) Mostra na tela a quantidade de pessoas detectadas.
+8) Encerra ao pressionar a tecla q.
+
+Tecnologias usadas:
+
+1) Python
+3) Ultralytics YOLOv8
+2) OpenCV
+
+Pré-requisitos:
+
 Python 3.8 ou superior
 Webcam funcionando
 Dependências instaladas:
-ultralytics
-opencv-python
-Instalação
+    ultralytics
+    opencv-python
+
+Instalação:
+
 Instale as bibliotecas necessárias:
 
 pip install ultralytics opencv-python
 
-Como executar
+Como executar:
+
 No terminal, na pasta do projeto, execute:
 
 python main.py
 
 Ao abrir a janela do vídeo:
 
-O retângulo verde marca cada pessoa detectada.
 O texto em vermelho mostra o total detectado no frame atual.
+O retângulo verde marca cada pessoa detectada.
 Pressione q para sair.
+
 Explicação do fluxo do código
+
 1) Carregamento do modelo
 O modelo YOLOv8 nano é carregado a partir de yolov8n.pt.
 Esse modelo é leve e indicado para aplicações em tempo real.
@@ -68,12 +77,16 @@ Ao pressionar q:
 
 Libera a webcam.
 Fecha as janelas do OpenCV.
-Observações importantes
+
+Observações importantes:
+
 A contagem é por frame, não por pessoas únicas ao longo do tempo.
 Se a câmera não for a padrão, troque o índice em VideoCapture(0) para 1, 2, etc.
 O desempenho depende do hardware (CPU/GPU).
+
 Melhorias futuras (opcional)
-Adicionar rastreamento para contar pessoas únicas.
-Definir confiança mínima para reduzir falsos positivos.
-Salvar vídeo com as detecções.
-Exibir FPS na tela.
+
+Detectar rostos de pessoas diferentes
+Armazenar as pessoas em um banco de dados
+Conectar o código em uma aplicação web
+Conectar o código em um esp32 com câmera 
