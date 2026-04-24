@@ -1,6 +1,6 @@
-Este projeto usa visão computacional em tempo real para detectar e contar pessoas pela webcam, utilizando o modelo YOLOv8 (Ultralytics) com OpenCV.
+Este projeto usa visao computacional em tempo real para detectar pessoas e reconhecer rostos pela webcam, utilizando YOLOv8 (Ultralytics), OpenCV e face_recognition.
 
-O que este código faz
+O que este codigo faz
 O script em main.py:
 
 1) Carrega o modelo YOLOv8 nano (arquivo yolov8n.pt).
@@ -8,15 +8,18 @@ O script em main.py:
 3) rocessa cada frame do vídeo.
 4) Detecta objetos no frame com YOLO.
 5) Filtra apenas a classe pessoa (ID 0 no COCO).
-6) Desenha caixas nas pessoas detectadas.
-7) Mostra na tela a quantidade de pessoas detectadas.
-8) Encerra ao pressionar a tecla q.
+6) Detecta rostos no frame.
+7) Compara os rostos detectados com uma base local de pessoas cadastradas.
+8) Desenha caixas nas pessoas e nos rostos detectados.
+9) Mostra na tela a quantidade de pessoas e rostos reconhecidos.
+10) Encerra ao pressionar a tecla q.
 
 Tecnologias usadas:
 
 1) Python
-3) Ultralytics YOLOv8
 2) OpenCV
+3) Ultralytics YOLOv8
+4) face_recognition
 
 Pré-requisitos:
 
@@ -25,12 +28,27 @@ Webcam funcionando
 Dependências instaladas:
     ultralytics
     opencv-python
+    face-recognition
 
 Instalação:
 
 Instale as bibliotecas necessárias:
 
-pip install ultralytics opencv-python
+pip install ultralytics opencv-python face-recognition
+
+Base de rostos (obrigatorio para reconhecer nomes):
+
+Crie a pasta faces_db na raiz do projeto com esta estrutura:
+
+faces_db/
+    Ana/
+        foto1.jpg
+        foto2.jpg
+    Carlos/
+        foto1.jpg
+
+Cada subpasta representa o nome da pessoa.
+As imagens devem conter um rosto visivel.
 
 Como executar:
 
@@ -42,6 +60,7 @@ Ao abrir a janela do vídeo:
 
 O texto em vermelho mostra o total detectado no frame atual.
 O retângulo verde marca cada pessoa detectada.
+O retangulo azul marca cada rosto e mostra o nome (ou "Desconhecido").
 Pressione q para sair.
 
 Explicação do fluxo do código
